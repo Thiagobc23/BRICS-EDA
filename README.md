@@ -30,6 +30,9 @@ Other data sources may be useful to illustrate the story and will be explored. I
 
 ## Requirements
 
+Kaggle API
+`pip install Kaggle`
+
 Pandas  
 `pip install pandas`
 
