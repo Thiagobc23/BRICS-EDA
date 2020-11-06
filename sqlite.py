@@ -11,4 +11,11 @@ def create_connection(db_file):
         print(e)
     finally:
         if conn:
-            conn.close()
+            return conn
+
+def create_table(conn, create_table_sql):
+    try:
+        c = conn.cursor()
+        c.execute(create_table_sql)
+    except Error as e:
+        print(e)
