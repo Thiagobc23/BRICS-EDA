@@ -39,6 +39,9 @@ Pandas
 MissingNo  
 `pip install missingno`
 
+SQLite
+`pip install sqlite3`
+
 Microsoft Power BI  
 https://powerbi.microsoft.com/en-us/desktop/
 
