@@ -1,31 +1,43 @@
 import os
+import shutil
 import zipfile
 import pandas as pd
 import matplotlib.pyplot as plt
-import missingno as mn
 import kaggle
 
 class clean:
 
     def get_data(path):
         kaggle.api.authenticate()
-        kaggle.api.dataset_download_files('docstein/brics-world-bank-indicators', path='{}BRICS Development Indicators'.format(path), unzip=True)
+        kaggle.api.dataset_download_files('docstein/brics-world-bank-indicators', path=path, unzip=True)
         print('data downloaded')
 
+        # move files
+        source = '{}BRICS Development Indicators'.format(path)
+        data_dir = '{}data/'.format(path)
+        files = ['Economy_Data.csv','EducationAndEnviron_Data.csv','HealthAndPoverty_Data.csv',
+                'PrivateSector_Data.csv','PublicSector_Indicators.csv']
+
+        for f in files:
+            shutil.move(os.path.join(source, f), os.path.join(data_dir, f))
+        
+        # delete folder
+        shutil.rmtree(source)
+        print('files moved')
         # Define datasets
-        df_ed_env = pd.read_csv('{}BRICS Development Indicators/EducationAndEnviron_Data.csv'.format(path), sep=';')
+        df_ed_env = pd.read_csv('{}EducationAndEnviron_Data.csv'.format(data_dir), sep=';')
         df_ed_env['Category'] = ['Education and Enviorment']*len(df_ed_env)
 
-        df_health_pov = pd.read_csv('{}BRICS Development Indicators/HealthAndPoverty_Data.csv'.format(path), sep=';')
+        df_health_pov = pd.read_csv('{}HealthAndPoverty_Data.csv'.format(data_dir), sep=';')
         df_health_pov['Category'] = ['Health and Poverty']*len(df_health_pov)
 
-        df_priv = pd.read_csv('{}BRICS Development Indicators/PrivateSector_Data.csv'.format(path), sep=';')
+        df_priv = pd.read_csv('{}PrivateSector_Data.csv'.format(data_dir), sep=';')
         df_priv['Category'] = ['Private Sector']*len(df_priv)
 
-        df_pub = pd.read_csv('{}BRICS Development Indicators/PublicSector_Indicators.csv'.format(path), sep=';')
+        df_pub = pd.read_csv('{}PublicSector_Indicators.csv'.format(data_dir), sep=';')
         df_pub['Category'] = ['Public Sector']*len(df_pub)
 
-        df_econ = pd.read_csv('{}BRICS Development Indicators/Economy_Data.csv'.format(path), sep=';')
+        df_econ = pd.read_csv('{}Economy_Data.csv'.format(data_dir), sep=';')
         df_econ['Category'] = ['Economy']*len(df_econ)
 
         # Concatenate Datasets
@@ -83,9 +95,9 @@ class clean:
         fact = df[cols].rename(columns={'index':'SeriesIndex'})
 
         # save files
-        d_name.to_csv('{}clean_data/names.csv'.format(path))
-        d_country.to_csv('{}clean_data/countries.csv'.format(path))
-        d_years.to_csv('{}clean_data/years.csv'.format(path))
-        fact.to_csv('{}clean_data/brics.csv'.format(path))
+        d_name.to_csv('{}data/names.csv'.format(path))
+        d_country.to_csv('{}data/countries.csv'.format(path))
+        d_years.to_csv('{}data/years.csv'.format(path))
+        fact.to_csv('{}data/brics.csv'.format(path))
 
         print('done')
