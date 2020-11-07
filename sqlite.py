@@ -33,6 +33,3 @@ def import_data(conn, path):
 
     years = pd.read_csv ('{}data/years.csv'.format(path))
     years.to_sql('years', conn, if_exists='replace', index = False)
-
-
-
