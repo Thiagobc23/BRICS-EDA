@@ -24,6 +24,16 @@ __years__ -> [Years, Filter_Years]
 
 \* The table __years__ has a 'many to many' relationships with the fact table (brics). That allows us to create a filter for the year and retrieve the last year available, regardless of the selected year having missing records. 
 
+## ETA
+
+The data is downloaded from Kaggle, cleaned, and saved as .csv files. The main script will then read the files and add them to an SQLite database.  
+
+In the directory `api/` we have the code to run a Flask Rest API that will read the data from the database and transmit it in a .json format.  
+
+Saving the .csv files, creating the database, and transmitting with a Flask API may look like overkill - and it is.  
+The above described ETA was designed to showcase possibilities and not for performance.  
+  
+
 ## Analysis and Visualizations
 We will perform the Data analysis and visualizations with MS Power BI. The idea is to explore and learn about the BRICS countries using data from the World Bank Indicators to illustrate and tell a story about the group.
 
