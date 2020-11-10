@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>BRICS API</title>
+    <style>
+        body,html{
+            margin:0;
+            padding: 0;
+            font-family: Helvetica, Arial, sans-serif;
+            background-color:#93B6B3;
+        }
+
+        .center {
+            margin: auto;
+            width: 80%;
+        }
+        .info {
+            margin: auto;
+            width: 50%;
+            border: solid;
+            border-radius: 15px;
+            padding: 5px;
+            background-color: white;
+        }
+        .title {
+            text-align: center;
+            color: #464A4C;
+        }
+        .header{
+            width: 100%;
+            background-color: #B5D9D6;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        .footer{
+            width: 100%;
+            background-color: #B5D9D6;
+
+            position: relative;
+            height: 60px;
+            margin-top: -60px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+    <h1 class="title">BRICS - World Bank Indicators EDA</h1>
+    </div>
+    <br><br><br><br><br><br>
+    <div class="info">
+        <p>The objective of this project is to explore and analyze data about BRICS. </p> 
+        <p>BRICS refers to the combined economies of Brazil, Russia, India, China and South Africa. </p>
+        <p>In this project, we'll use the World Bank Indicators data to explore and understand more about the five countries considered emerging economies.</p>
+    </div>
+    <br><br><br><br>
+    <div class="center">
+    <iframe width="1200" height="715" src="https://app.powerbi.com/view?r=eyJrIjoiMjJlMTljZGYtNjU4Zi00Y2VmLWI1NzEtMzE0MGExMjU3YzlhIiwidCI6ImU0MjdjNTlhLThkMzItNDczNi04NGZkLTU5ODI3M2RmYjE5ZCJ9" frameborder="0" allowFullScreen="true"></iframe>
+    </div>
+
+    <br><br><br><br>
+
+    <h1 class="title">API Calls</h1>
+    <div class="info">
+    <p><a href='/brics'>Brics API</a> - Returns the fact table, containing the values for each indicator/ contry/ year</p>
+    <p><a href='/countries'>Countries API</a> - Returns the dimension containing the countries of BRICS</p>
+    <p><a href='/names'>Names API</a> - Returns the dimension containing the names of the indicators</p>
+    <p><a href='/period'>Period API</a> - Returns the dimension containing the years and filter_years</p>
+    </div>
+
+    <br><br><br><br><br><br><br><br>
+    <footer class="footer">
+        <p>Authors: <br> 
+        <a href="https://github.com/thiagobc23"> Thiago Bernardes Carvalho </a> <br> 
+        <a href="https://github.com/adrianonsilva"> Adriano Nascimento Silva </a></p>
+    </footer>
+</body>
+</html>
+

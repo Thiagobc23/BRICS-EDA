@@ -1,5 +1,5 @@
 import flask 
-from flask import request, jsonify
+from flask import request, jsonify, render_template
 import sqlite3
 import json
 
@@ -13,12 +13,7 @@ def dict_factory(cursor, row):
 
 @app.route("/")
 def home():
-    return '''<h1>Brics World Bank Indicators</h1>
-            <p><a href='/period'>Period API</a></p>
-            <p><a href='/countries'>Countries API</a></p>
-            <p><a href='/names'>Names API</a></p>
-            <p><a href='/brics'>Brics API</a></p>
-    '''
+    return render_template('index.html')
 
 @app.route('/period', methods=['GET'])
 def get_years():
