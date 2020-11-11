@@ -10,6 +10,7 @@ COPY ./requirements.txt /app/requirements.txt
 COPY ./app.py /app/app.py
 COPY ./database.py /app/database.py
 COPY ./loaddata.py /app/loaddata.py
+COPY ./templates/index.html /app/templates/index.html
 
 RUN mkdir -p /root/.kaggle
 COPY ./kaggle.json /root/.kaggle
